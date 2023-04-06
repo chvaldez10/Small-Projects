@@ -59,19 +59,17 @@ def exit(msg=None):
     sys.exit(0)
 
 
-def read_json(json_path):
+def read_json():
     print("\nReading JSON file\n")
     try:
-        with open(f"{json_path}") as sim_json:
-            sim_data = json.load(sim_json)
-            json_object = json.dumps(sim_data, indent=4)
+        with open("parameters.json") as param_data:
+            params = json.load(param_data)
+            json_object = json.dumps(params, indent=4)
             print(f"JSON file content: {json_object}\n")
 
     except Exception as error:
         print(error)
         exit()
-
-    return sim_data
 
 
 def print_roadmap():
@@ -127,6 +125,8 @@ if __name__ == "__main__":
 
         # read songs
         read_song_lines(song_template)
+
+        read_json()
 
         # song1 = RevisedSong(song_verses_list, song_chorus_list, song_bridge_list,
         #                     song_ending_list, num_of_lines, refrain_vs_chorus)

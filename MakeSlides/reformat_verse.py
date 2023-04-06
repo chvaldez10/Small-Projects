@@ -19,9 +19,9 @@ class RevisedSong:
 
     def __init__(self, song: dict) -> None:
         self.song = song
-        print(type(self.song))
+        self.song_parameters = self.song.get(
+            "song_parameters", "no song parameters")
         self.num_of_lines = self.song["song_parameters"]["num_of_lines"]
-        print(self.num_of_lines)
 
     def read_song(self) -> None:
         song_lyrics = []
