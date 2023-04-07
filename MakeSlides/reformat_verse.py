@@ -23,8 +23,9 @@ class RevisedSong:
             "song_parameters", "no song parameters")
         self.num_of_lines = self.song["song_parameters"]["num_of_lines"]
 
+        self.cleaned_song = {}
+
     def read_song(self) -> None:
-        song_lyrics = []
         song_lines = list(self.song.keys())
         song_title = self.song["song_parameters"]["song_title"]
 
@@ -37,27 +38,23 @@ class RevisedSong:
                           for line in song_lines if line.strip() != ""]
 
             # remove white space in each clause and returns number of song lines per slide
-            song_lines_tmp = self.remove_white_spaces_in_lines(
-                song_lines)
-            print(f"song_lines_tmp = {song_lines_tmp}")
-            song_lyrics.append(song_lines_tmp)
+            self.remove_white_spaces_in_lines(song_lines, verse)
 
-    def remove_white_spaces_in_lines(self, song_lines: list[str]) -> list[str]:
+        # print(self.cleaned_song)
+        for verse, lyrics in self.cleaned_song.items():
+            print(f"{verse}: {lyrics}\n")
+
+    def remove_white_spaces_in_lines(self, song_lines: list[str], verse: str) -> None:
         """splits lines and removes whitespace"""
         song_lines_tmp = []
 
-        for line in song_lines:
+        for count, line in enumerate(song_lines):
             new_line = line.split("\n")
             new_line = [line.strip() for line in new_line]
-            print(f"new_line = {new_line}")
 
             # revising songs based on number of lines per slide
             song_lines_revised = self.revise_song_lines(new_line)
-            print(f"song_lines_revised = {song_lines_revised}")
-
-            song_lines_tmp.append(song_lines_revised)
-
-        return song_lines_tmp
+            self.cleaned_song[f"{verse.title()} {count+1}"] = song_lines_revised
 
     def revise_song_lines(self, song_lines) -> list[str]:
         song_lines_len = len(song_lines)

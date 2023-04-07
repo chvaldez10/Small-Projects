@@ -5,7 +5,7 @@ song_1 = {
             "is_chorus": True,
             "num_of_lines": 1,
         },
-    "verses":
+    "verse":
         """
             Praise is rising, eyes are turning to You
             We turn to You
@@ -56,7 +56,7 @@ song_template = {
             "is_chorus": True,
             "num_of_lines": 2,
         },
-    "verses":
+    "verse":
         """
             Verse 1-1
             Verse 1-2

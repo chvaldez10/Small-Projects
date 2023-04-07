@@ -23,7 +23,7 @@ from songs import *
 from reformat_verse import RevisedSong
 from create_slide import MakeSlide
 
-PPT_SONGS_DIR = r"../../Songs"
+PPT_SONGS_DIR = r"D:/chris/Documents/CFMC/Songs"
 SONG_LIST_TXT = r"./song_list.txt"
 
 
