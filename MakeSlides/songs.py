@@ -55,6 +55,13 @@ song_template = {
             "song_title": "test",
             "is_chorus": True,
             "num_of_lines": 2,
+            "roadmap":
+            """
+                Verse 1
+                Verse 2
+                Chorus 1
+            """,
+
         },
     "verse":
         """

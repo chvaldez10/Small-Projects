@@ -72,21 +72,6 @@ def read_json():
         exit()
 
 
-def print_roadmap():
-    os.system(r"roadmap.txt")
-
-    try:
-        with open("roadmap.txt", "r", encoding="utf-8") as roadmap_data:
-            song_roadmap_list = roadmap_data.read().split("\n")
-            print("\n    -------------------------\n    |    Current roadmap    |\n    -------------------------\n")
-            [print(f"            {roadmap}") for roadmap in song_roadmap_list]
-    except Exception as error:
-        print(error)
-        make_empty_txt_file("roadmap")
-
-    return song_roadmap_list
-
-
 def read_song_lines(*songs: dict) -> None:
     """
         Reads song objects passed in from a list of songs

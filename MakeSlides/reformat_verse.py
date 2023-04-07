@@ -4,15 +4,7 @@ class RevisedSong:
 
         Desired output looks like this:
         {
-            Verse 1: ['Jumping up and down, \nJumping up and down, ', 'Jumping up and down, \nShout Hosanna! Hosanna! ']
-
-            Verse 2: ['Here comes Jesus riding on a donkey, \nHosanna! Hosanna! Hosanna to the King! ', 'Wave the branches of the trees before Him, \nHosanna! Hosanna! Hosanna to the King!']
-
-            Chorus 1: ['And He walks with me, and He talks with me,\nAnd He tells me I am His own;', 'And the joy we share as we tarry there,\nNone other has ever known.']
-
-            Bridge: ['Holy, holy, Lord Almighty\nGood and gracious', 'Good and gracious\nHoly, holy, Lord Almighty']
-
-            Ending: []
+            Verse 1: ['Verse 1-1\nVerse 1-2', 'Verse 1-3\nVerse 1-4', 'Verse 1-5']
         }
 
     """
@@ -24,11 +16,16 @@ class RevisedSong:
         self.num_of_lines = self.song["song_parameters"]["num_of_lines"]
 
         self.cleaned_song = {}
+        self.roadmap = self.read_roadmap()
+
+    def read_roadmap(self):
+        roadmap = self.song["song_parameters"]["roadmap"].split("\n")
+        return [line.strip()
+                for line in roadmap if line.strip() != ""]
 
     def read_song(self) -> None:
         song_lines = list(self.song.keys())
         song_title = self.song["song_parameters"]["song_title"]
-
         print(f"\nProcessing: {song_title}\n")
 
         for verse in song_lines[1:]:
@@ -40,19 +37,16 @@ class RevisedSong:
             # remove white space in each clause and returns number of song lines per slide
             self.remove_white_spaces_in_lines(song_lines, verse)
 
-        # print(self.cleaned_song)
         for verse, lyrics in self.cleaned_song.items():
             print(f"{verse}: {lyrics}\n")
 
     def remove_white_spaces_in_lines(self, song_lines: list[str], verse: str) -> None:
         """splits lines and removes whitespace"""
-        song_lines_tmp = []
 
         for count, line in enumerate(song_lines):
             new_line = line.split("\n")
             new_line = [line.strip() for line in new_line]
 
-            # revising songs based on number of lines per slide
             song_lines_revised = self.revise_song_lines(new_line)
             self.cleaned_song[f"{verse.title()} {count+1}"] = song_lines_revised
 
