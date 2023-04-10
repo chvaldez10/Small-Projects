@@ -23,6 +23,7 @@ from songs import *
 from reformat_verse import RevisedSong
 from create_slide import MakeSlide
 
+"""Move list_pptx and read_json functions to CreateSlide class"""
 PPT_SONGS_DIR = r"D:/chris/Documents/CFMC/Songs"
 SONG_LIST_TXT = r"./song_list.txt"
 
@@ -39,6 +40,19 @@ def list_pptx() -> None:
 
         with open(txt_path, "a") as pptx_data:
             [pptx_data.write(f"{pptx}\n") for pptx in pptx_in_folder]
+
+
+def read_json():
+    print("\nReading JSON file\n")
+    try:
+        with open("parameters.json") as param_data:
+            params = json.load(param_data)
+            json_object = json.dumps(params, indent=4)
+            print(f"JSON file content: {json_object}\n")
+
+    except Exception as error:
+        print(error)
+        exit()
 
 
 def make_empty_txt_file(filename: str):
@@ -59,19 +73,6 @@ def exit(msg=None):
     sys.exit(0)
 
 
-def read_json():
-    print("\nReading JSON file\n")
-    try:
-        with open("parameters.json") as param_data:
-            params = json.load(param_data)
-            json_object = json.dumps(params, indent=4)
-            print(f"JSON file content: {json_object}\n")
-
-    except Exception as error:
-        print(error)
-        exit()
-
-
 def read_song_lines(*songs: dict) -> None:
     """
         Reads song objects passed in from a list of songs
@@ -88,6 +89,24 @@ def get_expected_song_lines() -> list[str]:
     """returns list of expected song lines from template"""
     return list(song_template.keys())
 
+
+def print_hamburger(header: str, list_of_ingredients: list[str]) -> None:
+    """Prints out hamburger text given a list of strings and header"""
+    header_len = len(header)
+    padding = header_len + 2*10
+
+    # adding | symbol adds a space
+    padding_for_header = padding-2
+
+    hdr = header.center(padding_for_header, " ")
+    print("\t", "-"*padding)
+    print("\t|", hdr, "|")
+    print("\t", "-"*padding)
+
+    for ingredient in list_of_ingredients:
+        ingr = ingredient.center(padding, " ")
+        print("\t", ingr)
+
 ###########################################################
 #
 #            Main loop for make_slider.py
@@ -98,20 +117,15 @@ def get_expected_song_lines() -> list[str]:
 if __name__ == "__main__":
     try:
         expected_song_lines = get_expected_song_lines()
-        print(f"Expected verses: {expected_song_lines}")
+        print_hamburger("Expected Song Lines", expected_song_lines)
 
     except Exception as error:
         print(error)
         exit()
 
     else:
-        # update song_list.txt
-        list_pptx()
-
         # read songs
         read_song_lines(song_template)
-
-        read_json()
 
         # song1 = RevisedSong(song_verses_list, song_chorus_list, song_bridge_list,
         #                     song_ending_list, num_of_lines, refrain_vs_chorus)

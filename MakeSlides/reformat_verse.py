@@ -4,7 +4,7 @@ class RevisedSong:
 
         Desired output looks like this:
         {
-            Verse 1: ['Verse 1-1\nVerse 1-2', 'Verse 1-3\nVerse 1-4', 'Verse 1-5']
+            Verse 1: ["Verse 1-1\nVerse 1-2", "Verse 1-3\nVerse 1-4", "Verse 1-5"]
         }
 
     """
@@ -18,10 +18,12 @@ class RevisedSong:
         self.cleaned_song = {}
         self.roadmap = self.read_roadmap()
 
-    def read_roadmap(self):
+    def read_roadmap(self) -> list[str]:
         roadmap = self.song["song_parameters"]["roadmap"].split("\n")
-        return [line.strip()
-                for line in roadmap if line.strip() != ""]
+        roadmap = [line.strip()
+                   for line in roadmap if line.strip() != ""]
+
+        return roadmap
 
     def read_song(self) -> None:
         song_lines = list(self.song.keys())
