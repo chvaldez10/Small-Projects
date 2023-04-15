@@ -1,0 +1,13 @@
+Notes from Apr14 DeepRacer workshop.
+Agent - Environment - State <-> Action <-> Reward - Episode
+
+Accounts: https://dashboard.eventengine.run/login?hash=8350-1f41776e14-42
+Workshop: https://bit.ly/dpr-workshop
+
+Download Physical Car Model
+
+Extra links :
+https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-reward-function-input.html#reward-function-input-closest_waypoints
+https://www.youtube.com/watch?v=xBpglYdmdyw
+https://deepracing.io/
+https://catalog.workshops.aws/deepracer-200l/en-US 
