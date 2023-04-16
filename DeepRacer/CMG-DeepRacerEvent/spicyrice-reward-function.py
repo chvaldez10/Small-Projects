@@ -34,7 +34,7 @@ def reward_function(params):
     """
 
     # constants
-    REWARD = 30
+    REWARD = 1
 
     # unpack params
     all_wheels_on_track = params["all_wheels_on_track"]
