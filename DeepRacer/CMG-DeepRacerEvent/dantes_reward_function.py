@@ -3,10 +3,7 @@ import math
 
 def reward_function(params):
     """
-    Action space parameters are all set to default values
-    This sample code is taken from an online source
-    TODO: Play with different action space parameters
-    TODO: analyze results
+    this reward function is from https://www.linkedin.com/pulse/aws-deepracer-my-journey-from-17-seconds-95-dante-chen/?trk=pulse-article_more-articles_related-content-card
     """
 
     import math
@@ -36,6 +33,8 @@ def reward_function(params):
     benchmark_steps = 173
     straight_waypoints = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 44, 45, 46, 47, 48, 49, 50, 56, 57, 58, 59,
                           60, 61, 62, 63, 64, 71, 72, 73, 74, 75, 76, 77, 78, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 112, 113, 114, 115, 116, 117]
+
+    reward = 1
 
     # Get reward if completes the lap and more reward if it is faster than benchmark_time
     if progress == 100:
@@ -86,6 +85,5 @@ def reward_function(params):
     # Penalize if the car cannot finish the track in less than benchmark_steps
     elif (steps % 50) == 0 and progress < (steps / benchmark_steps) * 100:
         reward -= 5.0
-    return reward
 
     return float(reward)
