@@ -6,8 +6,6 @@ def reward_function(params):
     this reward function is from https://www.linkedin.com/pulse/aws-deepracer-my-journey-from-17-seconds-95-dante-chen/?trk=pulse-article_more-articles_related-content-card
     """
 
-    import math
-
     # unpack parameters
     track_width = params['track_width']
     distance_from_center = params['distance_from_center']
