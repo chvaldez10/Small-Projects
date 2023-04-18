@@ -11,7 +11,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
 from check_PPT_name import CheckSongName
 
 class MakeSlide():
-    def __init__(self, song_dict: dict, song_title: str, save_slide, roadmap):
+    def __init__(self, song_dict: dict, song_title: str, save_slide:bool, roadmap: list[str]):
         self.lyrics_dict = song_dict
         self.song_title = song_title
         self.save_slide = save_slide
@@ -23,7 +23,7 @@ class MakeSlide():
         self.slide = self.prs.slides.add_slide(self.blank_slide_layout)
 
 
-    def make_song_slides(self):
+    def make_song_slides(self) -> None:
         # making title slide
         self.make_title_slides()
 
