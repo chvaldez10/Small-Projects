@@ -14,6 +14,7 @@ class RevisedSong:
         self.song_parameters = self.song.get(
             "song_parameters", "no song parameters")
         self.num_of_lines = self.song["song_parameters"]["num_of_lines"]
+        self.song_title = ""
 
         self.cleaned_song = {}
         self.roadmap = self.read_roadmap()
@@ -27,8 +28,8 @@ class RevisedSong:
 
     def read_song(self) -> None:
         song_lines = list(self.song.keys())
-        song_title = self.song["song_parameters"]["song_title"]
-        print(f"\nProcessing: {song_title}\n")
+        self.song_title = self.song["song_parameters"]["song_title"]
+        print(f"\nProcessing: {self.song_title}\n")
 
         for verse in song_lines[1:]:
             # identify whole verse
