@@ -95,7 +95,7 @@ def verify_roadmap(song_roadmap: list[str]) -> None:
     with open(ROADMAP_TXT_FILE, "w") as roadmap_file:
         [roadmap_file.write(f"{roadmap}\n") for roadmap in song_roadmap]
     
-    os.startfile(ROADMAP_TXT_FILE)
+    os.system(ROADMAP_TXT_FILE)
 
 
 def get_expected_song_lines() -> list[str]:

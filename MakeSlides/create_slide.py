@@ -10,9 +10,6 @@ from pptx.util import Pt, Cm
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
 from check_PPT_name import CheckSongName
 
-PPT_FOLDER_PREFIX = "./"
-SONGS_DIRECTORY = r"./songs/"
-
 class MakeSlide():
     def __init__(self, song_dict: dict, song_title: str, save_slide, roadmap):
         self.lyrics_dict = song_dict
