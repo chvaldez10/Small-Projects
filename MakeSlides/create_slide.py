@@ -48,9 +48,12 @@ class MakeSlide():
         self.prs.save(pptx_name)
 
         if self.save_slide:
-            save_location = PPT_FOLDER_PREFIX + pptx_name
+            save_location = SONGS_DIRECTORY + pptx_name
 
-            print(f"Saving {pptx_name}")
+            print(f"Saving {pptx_name} in {save_location}")
+            
+            if not os.path.exists(SONGS_DIRECTORY):
+                os.mkdir(SONGS_DIRECTORY)
             shutil.copy2(pptx_name, save_location)
 
         os.startfile(f"{self.song_title}.pptx")
