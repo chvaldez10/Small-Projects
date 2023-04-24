@@ -44,7 +44,7 @@ def get_num_of_questions() -> int:
         return num_of_questions
     except:
         print("That is not a valid number")
-        get_num_of_questions()
+        return get_num_of_questions()
 
 def get_difficulty() -> str:
     global difficulty
@@ -81,8 +81,8 @@ def play_quiz_game() -> None:
         new_question = Question(question_text, question_answer)
         question_bank.append(new_question)
 
-    # quiz = QuizBrain(question_bank)
-    # quiz_ui = QuizInterface(quiz)
+    quiz = QuizBrain(question_bank)
+    quiz_ui = QuizInterface(quiz)
 
 fill_parameters()    
-# play_quiz_game()
+play_quiz_game()
