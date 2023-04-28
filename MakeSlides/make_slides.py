@@ -19,18 +19,16 @@ import os
 import sys
 import getopt
 import json
+from parameters import *
 from songs import *
 from reformat_verse import RevisedSong
 from create_slide import MakeSlide
 
 """Move list_pptx and read_json functions to CreateSlide class"""
-PPT_SONGS_DIR = r"D:/chris/Documents/CFMC/Songs"
-SONG_LIST_TXT = r"./song_list.txt"
-
 
 def list_pptx() -> None:
     try:
-        pptx_in_folder = os.listdir(PPT_SONGS_DIR)
+        pptx_in_folder = os.listdir(SONGS_DIRECTORY)
         txt_path = SONG_LIST_TXT
     except Exception as error:
         print(error)
@@ -83,6 +81,21 @@ def read_song_lines(*songs: dict) -> None:
         # unpacking song dictionary
         new_song = RevisedSong(song)
         new_song.read_song()
+
+        song_dict = new_song.cleaned_song
+        song_roadmap = new_song.roadmap
+        song_title = new_song.song_title
+
+        verify_roadmap(song_roadmap)
+        new_ppt = MakeSlide(song_dict, song_title, save_file, song_roadmap)
+        new_ppt.make_song_slides()
+
+def verify_roadmap(song_roadmap: list[str]) -> None:
+    print_hamburger("Roadmap", song_roadmap)
+    with open(ROADMAP_TXT_FILE, "w") as roadmap_file:
+        [roadmap_file.write(f"{roadmap}\n") for roadmap in song_roadmap]
+    
+    os.system(ROADMAP_TXT_FILE)
 
 
 def get_expected_song_lines() -> list[str]:
