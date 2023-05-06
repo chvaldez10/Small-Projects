@@ -2,8 +2,6 @@ import math
 
 
 def reward_function(params):
-
-
     # Read input variables
     waypoints = params['waypoints']
     closest_waypoints = params['closest_waypoints']

@@ -11,5 +11,3 @@ https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-reward-fun
 https://www.youtube.com/watch?v=xBpglYdmdyw
 https://deepracing.io/
 https://catalog.workshops.aws/deepracer-200l/en-US 
-
-poponuts reward function: https://github.com/poponuts/aws-deepracer-model
