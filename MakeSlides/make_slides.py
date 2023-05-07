@@ -87,8 +87,8 @@ def read_song_lines(*songs: dict) -> None:
         song_title = new_song.song_title
 
         verify_roadmap(song_roadmap)
-        new_ppt = MakeSlide(song_dict, song_title, save_file, song_roadmap)
-        new_ppt.make_song_slides()
+        # new_ppt = MakeSlide(song_dict, song_title, save_file, song_roadmap)
+        # new_ppt.make_song_slides()
 
 def verify_roadmap(song_roadmap: list[str]) -> None:
     print_hamburger("Roadmap", song_roadmap)
@@ -129,16 +129,22 @@ def print_hamburger(header: str, list_of_ingredients: list[str]) -> None:
 
 if __name__ == "__main__":
     try:
+        header = "Expected Song Lines"
         expected_song_lines = get_expected_song_lines()
-        print_hamburger("Expected Song Lines", expected_song_lines)
+        print_hamburger(header, expected_song_lines)
 
     except Exception as error:
         print(error)
         exit()
 
     else:
+        """
+            TODO: turn make_slides.py into an exe when done
+        """
         # read songs
-        read_song_lines(song_template)
+        # appens to args accordingly
+        # read_song_lines(song_template, song1)
+        read_song_lines(song1)
 
         # song1 = RevisedSong(song_verses_list, song_chorus_list, song_bridge_list,
         #                     song_ending_list, num_of_lines, refrain_vs_chorus)

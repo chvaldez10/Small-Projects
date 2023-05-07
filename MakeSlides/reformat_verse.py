@@ -19,12 +19,13 @@ class RevisedSong:
         self.cleaned_song = {}
         self.roadmap = self.read_roadmap()
 
+
     def read_roadmap(self) -> list[str]:
         roadmap = self.song["song_parameters"]["roadmap"].split("\n")
         roadmap = [line.strip()
                    for line in roadmap if line.strip() != ""]
-
         return roadmap
+
 
     def read_song(self) -> None:
         song_lines = list(self.song.keys())
@@ -43,6 +44,7 @@ class RevisedSong:
         for verse, lyrics in self.cleaned_song.items():
             print(f"{verse}: {lyrics}\n")
 
+
     def remove_white_spaces_in_lines(self, song_lines: list[str], verse: str) -> None:
         """splits lines and removes whitespace"""
 
@@ -52,6 +54,7 @@ class RevisedSong:
 
             song_lines_revised = self.revise_song_lines(new_line)
             self.cleaned_song[f"{verse.title()} {count+1}"] = song_lines_revised
+
 
     def revise_song_lines(self, song_lines) -> list[str]:
         song_lines_len = len(song_lines)

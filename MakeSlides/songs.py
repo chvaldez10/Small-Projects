@@ -1,51 +1,48 @@
-song_1 = {
+song1 = {
     "song_parameters":
         {
-            "song_title": "test",
+            "song_title": "song1",
             "is_chorus": True,
             "num_of_lines": 1,
+            "roadmap":
+            """
+                Verse 1
+                Verse 2
+                Chorus 1
+            """,
         },
     "verse":
         """
-            Praise is rising, eyes are turning to You
-            We turn to You
-            Hope is stirring, hearts are yearning for You
-            We long for You
-            
-            Hear the sound of hearts returning to You
-            We turn to You
-            In Your kingdom broken lives are made new
-            You make us new
+            Lord I lift Your name on high
+            Lord I love to sing Your praises
+            I'm so glad You're in my life
+            I'm so glad You came to save us
         """,
     "pre-chorus":
         """
-            'Cause when we see You we find strength
-            To face the day
-            In Your presence all our fears are washed away
-            Washed away 
         """,
     "chorus":
         """
-            Hosanna
-            Hosanna
-            You are the God who saves us
-            Worthy of all our praises
+            You came from heaven to earth to show the way
+            From the earth to the cross, my debt to pay
+            From the cross to the grave, from the grave to the sky
+            Lord I lift Your name on high
+
+            Waves of mercy, waves of grace
+            Everywhere I look I see your face
+            Your love has captured me
+            O my God, this love, how can it be?
         """,
     "bridge":
         """
-            You are the God who saves us
-            Worthy of all our praises
         """,
     "ending":
         """
-            Hosanna
-            Hosanna
-            Hosanna
+            La la la la la la, la la la la la la la la
         """,
     "tag":
         """
-            Yeah, yeah
-            Yeah, yeah  
+            La la la la la la, la la la la la la la la
         """,
 }
 
