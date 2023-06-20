@@ -3,22 +3,22 @@ public class Board implements Constants{
     private int markCount;
 
     public Board() {
-        markCount = 0;
-        tictacBoard = new char[3][];
+        this.markCount = 0;
+        this.tictacBoard = new char[3][];
 
         for(int i=0; i<3; i++) {
-            tictacBoard[i] = new char[3];
+            this.tictacBoard[i] = new char[3];
             for (int j=0; j<3; j++)
-                tictacBoard[i][j] = spaceChar;
+                this.tictacBoard[i][j] = spaceChar;
         }
     }
 
     public char getMark(int row, int col) {
-        return tictacBoard[row][col];
+        return this.tictacBoard[row][col];
     }
 
     public boolean isFull() {
-        return markCount == 9;
+        return this.markCount >= 9;
     }
 
     public boolean xWins() {
@@ -38,18 +38,18 @@ public class Board implements Constants{
     public int checkWinner(char mark) {
         //check rows
         for (int row=0; row<3; row++) {
-            if(tictacBoard[row][0]==mark && tictacBoard[row][1]==mark &
-                    tictacBoard[row][2] == mark) return 1;
+            if(this.tictacBoard[row][0]==mark && this.tictacBoard[row][1]==mark &
+                    this.tictacBoard[row][2] == mark) return 1;
         }
 
         //check columns
         for (int col=0; col<3; col++) {
-            if(tictacBoard[0][col]==mark && tictacBoard[1][col]==mark &
-                    tictacBoard[2][col] == mark) return 1;
+            if(this.tictacBoard[0][col]==mark && this.tictacBoard[1][col]==mark &
+                    this.tictacBoard[2][col] == mark) return 1;
         }
-        
-        if ((tictacBoard[0][0] == mark && tictacBoard[1][1] == mark && tictacBoard[2][2] == mark) ||
-                (tictacBoard[0][2] == mark && tictacBoard[1][1] == mark && tictacBoard[2][0] == mark))
+
+        if ((this.tictacBoard[0][0] == mark && this.tictacBoard[1][1] == mark && this.tictacBoard[2][2] == mark) ||
+                (this.tictacBoard[0][2] == mark && this.tictacBoard[1][1] == mark && this.tictacBoard[2][0] == mark))
             return 1;
 
         return 0;
