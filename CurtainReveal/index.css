@@ -1,0 +1,89 @@
+/* Root definitions: Setting up global CSS variables for theme colors */
+:root {
+  --accent: hsl(360, 80%, 50%);
+  --accent-dark: hsl(360, 80%, 38%);
+  --accent-darker: hsl(360, 80%, 30%);
+  --accent-lighter: hsl(360, 80%, 70%);
+}
+
+body {
+  background: whitesmoke;
+}
+
+/* Outer container styling */
+.rnOuter {
+  /* background: whitesmoke; */
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+/* Inner container styling */
+.rnInner {
+  width: 100%; /* Full width of the parent */
+  position: absolute;
+  top: -10%; /* Slightly offset from the top */
+  right: 0;
+  bottom: 0;
+  left: 0; /* Full coverage of parent */
+  margin: auto; /* Centering the content */
+  transform-style: preserve-3d;
+  transition: transform 6s ease; /* Smooth transformation over 6 seconds */
+  transform-origin: -120% top; /* Origin point for transformations */
+}
+
+/* Styling for individual units within rnInner */
+.rnUnit {
+  width: 10vw; /* Relative width based on viewport width */
+  height: 120vh; /* Taller than the viewport height */
+  background: repeating-linear-gradient(
+    to left,
+    var(--accent) 4vw,
+    var(--accent-darker) 8vw,
+    var(--accent-lighter) 10vw
+  );
+  background-size: 100% 100%; /* Cover the entire element */
+  display: inline-block; /* Display as an inline block */
+  transform-origin: 0 0%; /* Origin of transformations */
+  transform: rotate(3deg); /* Slightly rotated */
+  animation: rnUnit 2s ease infinite; /* Continuous animation */
+}
+
+/* Keyframes for rnUnit animation */
+@keyframes rnUnit {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* Animation delay for rnUnit elements based on their position */
+.rnUnit:nth-child(odd) {
+  animation-delay: calc(-0.1s * var(--i));
+}
+
+/* Table layout styling */
+.aoTable {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Table cell styling */
+.aoTableCell {
+  color: black;
+  display: table-cell;
+  vertical-align: middle;
+  transition: color 3s ease;
+}
+
+/* Hover effects for rnOuter container */
+.rnOuter:hover .rnInner {
+  transform-origin: -120% top;
+  transform: scaleX(0);
+}
+
+/* Hover effects for aoTableCell elements */
+.rnOuter:hover .aoTableCell {
+  color: white;
+}
