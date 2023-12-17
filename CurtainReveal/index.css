@@ -12,7 +12,6 @@ body {
 
 /* Outer container styling */
 .rnOuter {
-  /* background: whitesmoke; */
   overflow: hidden;
   position: relative;
   height: 100vh;
