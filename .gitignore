@@ -86,3 +86,9 @@ jspm_packages/
 *.xlsx
 *.ppt
 *.pptx
+
+# personal files
+*.mp3
+*.mp4
+*.jpg
+*.png
