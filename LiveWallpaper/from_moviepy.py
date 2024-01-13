@@ -3,6 +3,9 @@ from PIL import Image
 import numpy as np
 import os
 import time
+import traceback
+
+VIDEO_PATH_PREFIX = r"./assets/video"
 
 def extract_and_save_frames(video_path, times_to_save):
     video = VideoFileClip(video_path)
@@ -14,15 +17,15 @@ def extract_and_save_frames(video_path, times_to_save):
         print(f"Frame from {t} seconds saved to {frame_path}")
     video.close()
 
-video_path = 'LuffyGomu.mp4'
-video = VideoFileClip(video_path)
-video_duration = int(video.duration)
-video.close()
+# video_path = 'LuffyGomu.mp4'
+# video = VideoFileClip(video_path)
+# video_duration = int(video.duration)
+# video.close()
 
 # Generate times to save: one frame per second
-times_to_save = [i for i in range(video_duration)]  # List of seconds from 0 to duration
+# times_to_save = [i for i in range(video_duration)]  # List of seconds from 0 to duration
 
-extract_and_save_frames(video_path, times_to_save)
+# extract_and_save_frames(video_path, times_to_save)
 
 def set_wallpaper(image_path):
     script = f'''osascript -e 'tell application "Finder" to set desktop picture to POSIX file "{image_path}"' '''
@@ -35,7 +38,24 @@ def cycle_wallpapers(frame_paths, display_time):
             set_wallpaper(frame_path)
             time.sleep(display_time)
 
-frame_paths = [f'/Users/altonwong/Desktop/LuffyGomu/frame_{i}.jpg' for i in range(len(times_to_save))]
-display_time = 0.5
+# frame_paths = [f'/Users/altonwong/Desktop/LuffyGomu/frame_{i}.jpg' for i in range(len(times_to_save))]
+# display_time = 0.5
 
-cycle_wallpapers(frame_paths, display_time)
+###########################################################
+#
+#                        Main loop
+#
+##########################################################
+
+def main() -> None:
+    video_filename = "luffy_gray_terminal.mp4"
+    video_path = os.path.join(VIDEO_PATH_PREFIX, video_filename)
+    print(video_path)
+    # cycle_wallpapers(frame_paths, display_time)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print(f"Error: {e}")
+        traceback.print_exc()
