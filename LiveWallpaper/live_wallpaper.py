@@ -8,14 +8,20 @@ SPI_SETDESKWALLPAPER = 20 # action number to set wallpaper
 VIDEO_PATH_PREFIX = r"./assets/video"
 IMAGE_PATH_PREFIX = r"./assets/frames"
 
+def get_absolute_path(relative_path):
+    # Convert a relative path to an absolute path
+    return os.path.abspath(relative_path)
+
 def set_wallpaper(image_path):
-    print(f"Setting wallpaper: {image_path}") 
-    result = ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, image_path, 3)
+    absolute_path = get_absolute_path(image_path)
+    print(f"Setting wallpaper: {absolute_path}") 
+    result = ctypes.windll.user32.SystemParametersInfoW(SPI_SETDESKWALLPAPER, 0, absolute_path, 3)
     if not result:
         print(f"Error setting wallpaper. Last error: {ctypes.GetLastError()}") 
 
 def read_video_frames(video_path):
-    cap = cv2.VideoCapture(video_path)
+    absolute_video_path = get_absolute_path(video_path)
+    cap = cv2.VideoCapture(absolute_video_path)
 
     if not cap.isOpened():
         raise IOError("Cannot open video file")
@@ -29,7 +35,8 @@ def read_video_frames(video_path):
             break
 
         frame_path = os.path.join(IMAGE_PATH_PREFIX, f'frame_{frame_count}.jpg')
-        cv2.imwrite(frame_path, frame)
+        absolute_frame_path = get_absolute_path(frame_path)
+        cv2.imwrite(absolute_frame_path, frame)
 
         frame_count += 1
 
@@ -39,8 +46,10 @@ def read_video_frames(video_path):
 def set_wallpapers_from_saved_frames(total_frames, frame_rate):
     for frame_count in range(total_frames):
         frame_path = os.path.join(IMAGE_PATH_PREFIX, f'frame_{frame_count}.jpg')
-        set_wallpaper(frame_path)
+        absolute_frame_path = get_absolute_path(frame_path)
+        set_wallpaper(absolute_frame_path)
         time.sleep(1 / frame_rate)
+        # break
 
 ###########################################################
 #
@@ -53,7 +62,8 @@ def main() -> None:
     video_path = os.path.join(VIDEO_PATH_PREFIX, video_filename)
     frame_rate = 30
 
-    total_frames = read_video_frames(video_path)
+    # total_frames = read_video_frames(video_path)
+    total_frames = 696
     set_wallpapers_from_saved_frames(total_frames, frame_rate)
 
 if __name__ == "__main__":
