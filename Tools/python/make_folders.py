@@ -10,7 +10,6 @@
 """
 
 import argparse
-import sys
 import os
 
 def file_exists(path: str) -> str:
@@ -31,15 +30,25 @@ def print_args(args: argparse.Namespace) -> None:
     for arg_name, arg_value in args_data.items():
         print(f"{arg_name}: {arg_value}")
 
+def generate_folders(args: argparse.Namespace) -> None:
+    folder_prefix = args.folder_prefix
+    max = args.num_of_iterations
+    root_dir = args.root_dir
+    counter = 0
+    
+    return
+    while counter < max:
+        pass
+
 def main(args: argparse.Namespace) -> None:
     """Main function that prints all arguments provided to the script."""
-    print_args(args)
+    generate_folders(args)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("prefix_folder", type=str, help="Prefix for folder name.")
+    parser.add_argument("folder_prefix", type=str, help="Prefix for folder name.")
     parser.add_argument("num_of_iterations", type=int, help="Number of iteration.")
-    parser.add_argument("input_dir", type=directory_exists, help="The root directory.")
+    parser.add_argument("root_dir", type=directory_exists, help="The root directory.")
 
     args = parser.parse_args()
     main(args)
