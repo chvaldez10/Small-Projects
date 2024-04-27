@@ -1,12 +1,10 @@
-🌟 **# Personal-Projects** 🌟
+🌟 **# Tools** 🌟
 
-🚀 _Small code base projects created during spur-of-the-moment inspiration._
+🚀 _Small code samples to store repetitive scripts or templates._
 
 ---
 
-### 📚 Projects:
+### 📚 Folders:
 
-1. 🎭 **CurtainReveal**: A web page to create captivating curtain reveal animations.
-2. 🏎️ **CMG-DeepRacerEvent**: Participated in CMG's 2023 DeepRacer event - an adventure in AI and racing.
-3. 🖥️ **MakeSlides**: Automated solution for repetitive PowerPoint slide copy-pasting tasks.
-4. 📜 **Tools** Random scripts to automate repeated tasks.
+1. 📜 **Scripts**: Random scripts to automate repeated tasks.
+2. 📖 **Templates**: Templates for things that you would normally copy and paste repetitively.
